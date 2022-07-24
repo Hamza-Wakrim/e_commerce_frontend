@@ -1,0 +1,13 @@
+.products {
+    padding: 30px 0;
+    text-align: center;
+    position: relative;
+    z-index: 9;
+    background-color: #fff;
+}
+
+.products .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 250px);
+    gap: 30px;
+}

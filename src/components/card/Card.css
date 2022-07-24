@@ -1,0 +1,51 @@
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.card img {
+    width: 100%;
+}
+
+.card .box {
+    background-color: #eee;
+    padding: 20px;
+}
+
+.card .info {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    color: var(--alt);
+}
+
+.card .info span {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.card .content {
+    margin-bottom: 20px;
+    color: var(--main-color);
+}
+
+.card .content a {
+    justify-content: flex-start;
+}
+
+.card .article-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.card a {
+    display: flex;
+    text-decoration: none;
+    color: var(--main-color);
+    justify-content: flex-end;
+}

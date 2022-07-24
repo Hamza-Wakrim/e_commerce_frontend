@@ -1,0 +1,41 @@
+.shop .shop-banner {
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+        url("https://cdn11.bigcommerce.com/s-8466dwhhql/images/stencil/2048x2048/f/mrh_essential-oils_2021-01-02__77204-3_category.original.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.shop .product:nth-child(even) {
+    border-left: 1px solid #ddd;
+}
+
+.shop .shop-banner .content {
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+}
+
+.shop .shop-banner .title {
+    color: #fff;
+    font-size: 3rem;
+    text-transform: uppercase;
+}
+
+.shop .container {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+}
+
+@media (max-width: 767px) {
+    .shop .container {
+        grid-template-columns: repeat(1, 100%);
+    }
+    .shop .product {
+        border-left: none;
+    }
+}

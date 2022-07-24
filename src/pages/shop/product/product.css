@@ -1,0 +1,85 @@
+/*===================
+=== Start Product ===
+===================*/
+
+.shop .product {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #ddd;
+    padding: 20px;
+}
+
+@media (max-width: 767px) {
+    .shop .product {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+.shop .product img {
+    width: 80px;
+}
+
+.shop .product .name {
+    font-family: Nunito, Clear Sans, arial, sans-serif;
+    color: var(--main-color);
+    font-weight: 700;
+    text-transform: none;
+    font-size: 1em;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+.shop .product .price {
+    padding: 0;
+    background-color: transparent;
+    margin: 20px 0;
+}
+
+.shop .product .price span {
+    font-weight: bold;
+}
+
+.shop .product .btn {
+    padding: 10px 15px;
+    border: none;
+    margin-right: 5px;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.shop .product .btn.view {
+    background-color: #8e805d;
+}
+
+.shop .product .btn.list {
+    background-color: #7c7c76;
+}
+
+.shop .product .share {
+    color: var(--main-color);
+}
+
+.shop .product .share span,
+.shop .product .share .icon {
+    margin-right: 10px;
+}
+
+.shop .product .share a {
+    text-decoration: none;
+    font-weight: 14px;
+    color: var(--main-color);
+}
+
+/*=================
+=== End Product ===
+=================*/

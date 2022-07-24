@@ -1,0 +1,81 @@
+.banner {
+    width: 100vw;
+    max-height: 400px;
+    padding: 50px 0;
+    background-color: var(--main-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.banner .title {
+    color: #fff;
+}
+
+.banner p {
+    color: #fff;
+}
+
+.banner form {
+    max-width: 90%;
+    width: 500px;
+    display: flex;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    padding: 20px;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+}
+
+.banner form input {
+    border: none;
+    flex: 1;
+    outline: none;
+    background-color: transparent;
+    color: #fff;
+}
+
+.banner form input::placeholder {
+    color: #eee;
+}
+
+.banner .icon {
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+}
+
+.categories a {
+    display: block;
+    padding: 0 20px;
+    color: #777;
+    text-decoration: none;
+    transition: color var(--main-transition) linear;
+    -webkit-transition: color var(--main-transition) linear;
+    -moz-transition: color var(--main-transition) linear;
+    -ms-transition: color var(--main-transition) linear;
+    -o-transition: color var(--main-transition) linear;
+}
+
+.categories a:hover {
+    color: var(--alt);
+    text-decoration: underline;
+}
+
+.categories a:not(:last-child) {
+    border-right: 1px solid #777;
+}

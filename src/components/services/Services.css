@@ -1,0 +1,47 @@
+/*====================
+=== Start Services ===
+====================*/
+
+.services {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 128px;
+    border-bottom: 1px solid #aaa;
+}
+
+.services .box {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    height: 100%;
+}
+
+.services .box:not(:last-child) {
+    border-right: 1px solid #aaa;
+}
+
+.services .box .icon {
+    color: #78a206;
+    font-size: 50px;
+}
+
+.services .box a {
+    color: var(--main-color);
+    transition: color var(--main-transition) linear;
+    -webkit-transition: color var(--main-transition) linear;
+    -moz-transition: color var(--main-transition) linear;
+    -ms-transition: color var(--main-transition) linear;
+    -o-transition: color var(--main-transition) linear;
+}
+
+.services .box a:hover {
+    color: #78a206;
+}
+
+/*==================
+=== End Services ===
+==================*/

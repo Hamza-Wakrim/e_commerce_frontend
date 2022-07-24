@@ -1,0 +1,69 @@
+/*===================
+=== Start Product ===
+===================*/
+
+.product {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.product .name {
+    font-family: Nunito, Clear Sans, arial, sans-serif;
+    color: var(--main-color);
+    font-weight: 700;
+    text-transform: none;
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+.product .rating {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.product .icon-star {
+    color: #e7721b;
+    font-size: 20px;
+}
+
+.product .rating .rate {
+    color: var(--main-color);
+    font-weight: bold;
+}
+
+.product .image {
+    margin: 0 auto;
+}
+
+.product .price {
+    padding: 20px;
+    background-color: #f6f5f2;
+    width: 250px;
+}
+
+.product .price span {
+    font-weight: bold;
+}
+
+.product .add-to-cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    background: #577c31;
+    color: #fff;
+    font-size: 0.875rem;
+    border: none;
+    width: 100%;
+    height: 42px;
+    font-weight: bold;
+}
+
+/*=================
+=== End Product ===
+=================*/

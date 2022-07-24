@@ -1,38 +1,75 @@
-.App {
-  text-align: center;
+/*======================
+=== Start Main Rules ===
+======================*/
+
+:root {
+    --main-color: #4e6262;
+    --alt: #577c31;
+    --main-transition: 0.3s;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+ul {
+    list-style: none;
 }
 
-.App-link {
-  color: #61dafb;
+.container {
+    padding: 0 10px;
+    margin: 0 auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Medium devices */
+@media (min-width: 576px) {
+    .container {
+        width: 560px;
+    }
 }
+
+/* // Medium devices */
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+/* // Large devices */
+@media (min-width: 992px) {
+    .container {
+        width: 980px;
+    }
+}
+
+/* // Extra large devices */
+@media (min-width: 1200px) {
+    .container {
+        width: 1190px;
+    }
+}
+
+.title {
+    font-family: Marcellus, serif;
+    font-weight: 400;
+    color: var(--main-color);
+    text-transform: none;
+    font-size: 2.275rem;
+    margin-bottom: 30px;
+}
+
+.flower {
+    background: url(//cdn.planttherapy.com/images/web/global/Footer-Flowers.png)
+        bottom no-repeat #4e6262;
+}
+
+/*====================
+=== End Main Rules ===
+====================*/

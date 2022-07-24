@@ -1,0 +1,129 @@
+/*================
+=== Start Hero ===
+================*/
+
+.hero {
+    width: 100%;
+    position: relative;
+}
+
+.hero .slider {
+    width: 100vw;
+    display: flex;
+    transition: all var(--main-transition) linear;
+    -webkit-transition: all var(--main-transition) linear;
+    -moz-transition: all var(--main-transition) linear;
+    -ms-transition: all var(--main-transition) linear;
+    -o-transition: all var(--main-transition) linear;
+}
+
+.hero .slider img {
+    width: 100vw;
+}
+
+.hero .controle .btns {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+}
+
+.hero .controle .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #000;
+    font-size: 20px;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.hero .controle .dots {
+    position: absolute;
+    left: 50%;
+    bottom: 130px;
+    display: flex;
+    gap: 20px;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+}
+
+.hero .controle .dot {
+    border: 2px solid #000;
+    background-color: transparent;
+    border-radius: 50%;
+    width: 15px;
+    cursor: pointer;
+    height: 15px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.hero .controle .dot.active {
+    background-color: #000;
+}
+
+.hero .buy {
+    min-height: 100px;
+    display: flex;
+    padding: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-color);
+    position: relative;
+    z-index: 30;
+}
+
+.hero .buy p {
+    color: #fff;
+    font-size: 1.3rem;
+    display: block;
+    margin: 25px 0;
+}
+
+.hero .buy button {
+    margin-bottom: 0;
+    margin-left: 20px;
+    color: var(--main-color);
+    border: 1px solid var(--alt);
+    min-width: 200px;
+    height: 40px;
+    text-transform: uppercase;
+    border-radius: 20px;
+    line-height: 40px;
+    padding: 0 20px;
+    font-weight: 700;
+    display: inline-block;
+    position: relative;
+    background: #e1e1e1;
+    transition-duration: var(--main-transition);
+    cursor: pointer;
+}
+
+.hero .buy button:hover {
+    background-color: var(--alt);
+}
+
+/*================
+=== End Hero ===
+================*/
