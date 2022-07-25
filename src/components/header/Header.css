@@ -59,6 +59,10 @@ header .navigation ul .level-1 span {
     -o-transition: color var(--main-transition) linear;
 }
 
+header .navigation ul .level-1 a {
+    text-decoration: none;
+}
+
 @media (max-width: 767px) {
     header .navigation {
         flex-direction: row-reverse;
@@ -96,21 +100,15 @@ header .navigation ul .level-1 > ul {
 }
 
 header .navigation ul .level-1:hover > ul {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 200px);
     gap: 30px;
-}
-
-header .navigation .level-2 {
-    color: var(--main-color);
-    font-size: 20px;
 }
 
 header .navigation .level-2 a {
     color: var(--main-color);
-    text-decoration: none;
     font-size: 14px;
-    font-weight: normal;
+    font-weight: bold;
 }
 
 @media (max-width: 767px) {

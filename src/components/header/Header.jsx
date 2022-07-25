@@ -58,7 +58,9 @@ const Header = () => {
                             <ul></ul>
                         </li>
                         <li className="level-1">
-                            <span>Blog</span>
+                            <Link to="/blog">
+                                <span>Blog</span>
+                            </Link>
                         </li>
                     </ul>
                 </nav>
