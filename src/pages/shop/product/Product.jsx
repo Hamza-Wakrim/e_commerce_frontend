@@ -4,7 +4,7 @@ import "./product.css";
 import { FaFacebookF, FaTwitter, FaPinterestP } from "react-icons/fa";
 
 const Product = ({ name, image, price, setName, setActive }) => {
-    const productURL = `/product/${name.toLowerCase().replace(" ", "-")}`;
+    const productURL = `/product/${name}`;
 
     const view = () => {
         setActive(true);
