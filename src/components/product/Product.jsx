@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./product.css";
 import { AiOutlineShoppingCart, AiFillStar } from "react-icons/ai";
+import img from "../../images/products/PlantTherapy-PupPony-ConfidentK9Bottle.jpg";
+import "./product.css";
 
 const Product = ({ name, image, price, button, rating }) => {
     const productURL = `/product/${name}`;
@@ -15,7 +16,7 @@ const Product = ({ name, image, price, button, rating }) => {
                 {name}
             </Link>
             <Link onClick={window.scrollTo(0, 0)} to={productURL}>
-                <img src={image} alt="" className="image" />
+                <img src={img} alt="" className="image" />
             </Link>
             <div className="rating">
                 <div className="stars">
