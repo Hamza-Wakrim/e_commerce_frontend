@@ -2,7 +2,8 @@
 import React, { useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 // Import Components
-import { Header, Product, Footer } from "../../components";
+import { Header, Footer } from "../../components";
+import Product from "./product/Product";
 import QuickView from "./quick view/QuickView";
 // Import Context
 import { productsContext } from "../../App";
