@@ -12,9 +12,11 @@ import {
 import { FaBars, FaTimes } from "react-icons/fa";
 
 const Header = () => {
-    const [open, setOpen] = useState(false);
-    const [open2, setOpen2] = useState(false);
+    const [level1, setLevel1] = useState(false);
+    const [level2, setLevel2] = useState(false);
+    const [level3, setLevel3] = useState(false);
     const { categories } = useContext(productsContext);
+    const { products } = useContext(productsContext);
 
     console.log();
 
@@ -27,28 +29,56 @@ const Header = () => {
                             <img src={Logo} alt="Logo" />
                         </Link>
                     </div>
-                    <FaBars className="icon" onClick={() => setOpen(true)} />
-                    <ul className={open ? "active" : ""}>
+                    <FaBars className="icon" onClick={() => setLevel1(true)} />
+                    <ul className={level1 ? "active" : ""}>
                         <FaTimes
                             className="icon"
-                            onClick={() => setOpen(false)}
+                            onClick={() => setLevel1(false)}
                         />
                         <li className="level-1">
                             <span>Whats new</span>
                             <ul></ul>
                         </li>
-                        <li onClick={() => setOpen2(true)} className="level-1">
+                        <li onClick={() => setLevel2(true)} className="level-1">
                             <span>Shop</span>
-                            <ul className={open2 ? "active" : ""}>
+                            <ul className={level2 ? "active" : ""}>
                                 {/* <FaTimes
                                     className="icon"
                                     onClick={setOpen2(false)}
                                 /> */}
                                 {categories.map((category) => (
-                                    <li key={category.id} className="level-2">
-                                        <Link to={`/${category.name}`}>
-                                            {category.name}
+                                    <li
+                                        onClick={() => setLevel3(true)}
+                                        key={category.id}
+                                        className="level-2"
+                                    >
+                                        <Link
+                                            key={category.id}
+                                            to={`/${category.name}`}
+                                        >
+                                            <span>{category.name}</span>
                                         </Link>
+                                        <ul className={level3 ? "active" : ""}>
+                                            <FaTimes
+                                                className="icon"
+                                                onClick={() => setLevel3(false)}
+                                            />
+                                            {products.map((product) =>
+                                                product.category.name ===
+                                                category.name ? (
+                                                    <li
+                                                        key={product.id}
+                                                        className="level-3"
+                                                    >
+                                                        <Link to={product.name}>
+                                                            {product.name}
+                                                        </Link>
+                                                    </li>
+                                                ) : (
+                                                    ""
+                                                )
+                                            )}
+                                        </ul>
                                     </li>
                                 ))}
                             </ul>
@@ -58,9 +88,9 @@ const Header = () => {
                             <ul></ul>
                         </li>
                         <li className="level-1">
-                            <Link to="/blog">
-                                <span>Blog</span>
-                            </Link>
+                            <span>
+                                <Link to="/blog">Blog</Link>
+                            </span>
                         </li>
                     </ul>
                 </nav>
