@@ -37,7 +37,7 @@ const QuickView = ({ product, setActive }) => {
                             <span>Origin: </span>
                             {product.origine_country}
                         </div>
-                        <div className="product-size">
+                        {/* <div className="product-size">
                             <span>Choose Size*</span>
                             <div className="btns">
                                 {product.size.map((s) => (
@@ -46,7 +46,7 @@ const QuickView = ({ product, setActive }) => {
                                     </button>
                                 ))}
                             </div>
-                        </div>
+                        </div> */}
                         <div className="product-price">
                             ${product.price - product.discount_price}
                         </div>
