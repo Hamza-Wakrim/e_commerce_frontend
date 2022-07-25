@@ -1,7 +1,6 @@
 // Import Hooks
 import React, { useState, useContext } from "react";
 import useCounter from "../../hooks/useCounter";
-import useFilter from "../../hooks/useFilter";
 import { useParams } from "react-router-dom";
 // Import Components
 import { Header, Product, Footer } from "../../components";
@@ -13,12 +12,12 @@ import { productsContext } from "../../App";
 import "./Product.css";
 
 const ProductPage = () => {
-    const products = useContext(productsContext);
+    const { products } = useContext(productsContext);
     const [infoKey, setInfoKey] = useState("description");
     const [counter, increment, decrement] = useCounter(1);
     const { id } = useParams();
-    const product = useFilter(products, "name", id)[0];
-    const lovedProducts = useFilter(products, "isLoved");
+    const product = products.filter((product) => product.name === id)[0];
+    const featuredProducts = products.filter((product) => product.featured);
 
     return (
         <div>
@@ -47,13 +46,13 @@ const ProductPage = () => {
                                     </div>
                                     <p>
                                         <span>Botanical Name:</span>
-                                        {product.botanical}
+                                        {product.botanical_name}
                                     </p>
                                     <p>
                                         <span>Origin:</span>
-                                        {product.origin}
+                                        {product.origine_country}
                                     </p>
-                                    <div className="size">
+                                    {/* <div className="size">
                                         <span>Choose Size *</span>
                                         <br />
                                         {product.size.map((e) => (
@@ -61,8 +60,11 @@ const ProductPage = () => {
                                                 {e}
                                             </button>
                                         ))}
-                                    </div>
-                                    <p className="price">{product.price}$</p>
+                                    </div> */}
+                                    <p className="price">
+                                        $
+                                        {product.price - product.discount_price}
+                                    </p>
                                     <div className="counter-container">
                                         <button
                                             onClick={decrement}
@@ -116,14 +118,19 @@ const ProductPage = () => {
                                         DISCLAIMERS
                                     </button>
                                 </div>
-                                <div className="content">
-                                    {product[infoKey]}
+                                <div
+                                    className="content"
+                                    dangerouslySetInnerHTML={{
+                                        __html: product[infoKey],
+                                    }}
+                                >
+                                    {}
                                 </div>
                             </div>
                             <div className="tranding">
                                 <h2 className="title">Customers Also Viewed</h2>
                                 <div className="products">
-                                    {lovedProducts.map((product) => (
+                                    {featuredProducts.map((product) => (
                                         <Product
                                             key={product.id}
                                             name={product.name}

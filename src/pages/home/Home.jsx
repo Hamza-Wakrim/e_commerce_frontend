@@ -8,16 +8,17 @@ import { productsContext } from "../../App";
 
 const Home = () => {
     const { products } = useContext(productsContext);
-    const lovedProducts = products.filter((product) => product.isLoved);
-    const meilleursProducts = products.filter(
-        (product) => product.isMeilleursOffers
-    );
+    const featuredProduct = products.filter((product) => product.featured);
+    const newProduct = products.filter((product) => product.new_product);
     return (
         <div>
             <Header />
             <Hero />
-            <Products products={lovedProducts} title={"Products You'll Love"} />
-            <Products products={meilleursProducts} title={"Meilleurs Offres"} />
+            <Products
+                products={featuredProduct}
+                title={"Products You'll Love"}
+            />
+            <Products products={newProduct} title={"Meilleurs Offres"} />
             <Contact />
             <Services />
             <Footer />

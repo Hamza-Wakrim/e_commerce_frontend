@@ -31,11 +31,11 @@ const QuickView = ({ product, setActive }) => {
                         </div>
                         <div className="product-botanical">
                             <span>Botanical Name:</span>
-                            {product.botanical}
+                            {product.botanical_name}
                         </div>
                         <div className="product-origin">
                             <span>Origin: </span>
-                            {product.origin}
+                            {product.origine_country}
                         </div>
                         <div className="product-size">
                             <span>Choose Size*</span>
@@ -47,7 +47,9 @@ const QuickView = ({ product, setActive }) => {
                                 ))}
                             </div>
                         </div>
-                        <div className="product-price">${product.price}</div>
+                        <div className="product-price">
+                            ${product.price - product.discount_price}
+                        </div>
                         <div className="product-cart">
                             <div className="product-counter">
                                 <button onClick={decrement}>-</button>

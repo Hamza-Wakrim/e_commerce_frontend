@@ -1,6 +1,5 @@
 // Import Hooks
 import React, { useState, useContext } from "react";
-import useFilter from "../../hooks/useFilter";
 import { useParams } from "react-router-dom";
 // Import Components
 import { Header, Product, Footer } from "../../components";
@@ -16,7 +15,9 @@ const Shop = () => {
     const [active, setActive] = useState(false);
     const { productCategoy } = useParams();
     const product = products.filter((p) => p.name === name)[0];
-    const productsCat = useFilter(products, "category", productCategoy);
+    const productsCat = products.filter(
+        (product) => product.category.name === productCategoy
+    );
 
     return (
         <>
