@@ -6,11 +6,15 @@ import { AiOutlineShoppingCart, AiFillStar } from "react-icons/ai";
 const Product = ({ name, image, price, button, rating }) => {
     const productURL = `/product/${name}`;
     return (
-        <div onClick={() => window.scrollTo(0, 0)} className="product">
-            <Link to={productURL} className="name">
+        <div className="product">
+            <Link
+                onClick={window.scrollTo(0, 0)}
+                to={productURL}
+                className="name"
+            >
                 {name}
             </Link>
-            <Link to={productURL}>
+            <Link onClick={window.scrollTo(0, 0)} to={productURL}>
                 <img src={image} alt="" className="image" />
             </Link>
             <div className="rating">

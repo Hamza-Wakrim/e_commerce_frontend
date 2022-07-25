@@ -14,7 +14,7 @@ const Api = () => {
 
     const getProducts = () => {
         axios
-            .get("http://backend.aromapedia.ma/api/foods?with=category")
+            .get("https://backend.aromapedia.ma/api/foods?with=category")
             .then((res) => setProducts(res.data.data))
             .catch((err) => console.log(err));
     };
