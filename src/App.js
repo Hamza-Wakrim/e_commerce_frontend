@@ -21,10 +21,10 @@ function App() {
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<Home />} />
-                        <Route path=":productCategoy" element={<Shop />} />
-                        <Route path="product/:id" element={<Product />} />
-                        <Route path="blog" element={<Blog />} />
-                        <Route path="blog/:article" element={<Article />} />
+                        <Route path="/:productCategoy" element={<Shop />} />
+                        <Route path="/product/:id" element={<Product />} />
+                        <Route path="/blog" element={<Blog />} />
+                        <Route path="/blog/:article" element={<Article />} />
                     </Routes>
                 </BrowserRouter>
             </div>
