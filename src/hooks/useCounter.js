@@ -1,25 +1,21 @@
 import { useState } from "react";
 
 const useCounter = (initialCount) => {
-    const [counter, setCounter] = useState(initialCount);
+    const [qty, setQty] = useState(initialCount);
 
     const increment = () => {
-        if (counter >= 10) {
-            setCounter(counter);
-        } else {
-            setCounter(counter + 1);
-        }
+        setQty(qty + 1);
     };
 
     const decrement = () => {
-        if (counter === 1) {
-            setCounter(counter);
+        if (qty === 1) {
+            setQty(qty);
         } else {
-            setCounter(counter - 1);
+            setQty(qty - 1);
         }
     };
 
-    return [counter, increment, decrement];
+    return [qty, increment, decrement];
 };
 
 export default useCounter;

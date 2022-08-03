@@ -9,14 +9,7 @@ const Products = ({ products, title }) => {
             <h3 className="title">{title}</h3>
             <div className="container">
                 {products.map((product) => (
-                    <Product
-                        key={product.id}
-                        name={product.name}
-                        image={product.image}
-                        price={product.price}
-                        button
-                        rating={5}
-                    />
+                    <Product product={product} button rating={5} />
                 ))}
             </div>
         </div>

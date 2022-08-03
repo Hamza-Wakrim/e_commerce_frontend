@@ -213,14 +213,29 @@ header .account ul {
 }
 
 header .account ul li {
-    text-decoration: none;
-    color: #4e6262;
-    font-weight: bold;
-    cursor: pointer;
+    margin-right: 5px;
+    border-radius: 20px;
+    background-color: #418189;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
 }
 
-header .account ul li span {
-    margin-right: px;
+header .account ul li svg {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+header .account ul li a {
+    text-decoration: none;
+    padding: 10px 20px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    height: 100%;
 }
 
 /*================

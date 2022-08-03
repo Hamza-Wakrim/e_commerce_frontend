@@ -184,6 +184,29 @@
     cursor: pointer;
     font-weight: bold;
     color: var(--main-color);
+    padding-bottom: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.product-page .description .btns button.active {
+    color: var(--alt);
+    position: relative;
+}
+
+.product-page .description .btns button.active::before {
+    content: "";
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: var(--alt);
+    z-index: -1;
+}
+
+.product-page .description .content {
+    font-size: 14px;
+    color: #777;
 }
 
 .product-page .tranding .products {

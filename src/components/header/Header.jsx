@@ -17,8 +17,7 @@ const Header = () => {
     const [level3, setLevel3] = useState(false);
     const { categories } = useContext(productsContext);
     const { products } = useContext(productsContext);
-
-    console.log();
+    let login = false;
 
     return (
         <header>
@@ -70,7 +69,9 @@ const Header = () => {
                                                         key={product.id}
                                                         className="level-3"
                                                     >
-                                                        <Link to={product.name}>
+                                                        <Link
+                                                            to={`/product/${product.name}`}
+                                                        >
                                                             {product.name}
                                                         </Link>
                                                     </li>
@@ -101,12 +102,20 @@ const Header = () => {
                 <div className="account">
                     <ul>
                         <li>
-                            <AiOutlineUser />
-                            <span>Account</span>
+                            {login ? (
+                                <Link to="/user/id">
+                                    <AiOutlineUser />
+                                    <span>Account</span>
+                                </Link>
+                            ) : (
+                                <Link to="/login">Login</Link>
+                            )}
                         </li>
                         <li>
-                            <AiOutlineShoppingCart />
-                            <span>Cart</span>
+                            <Link to="/cart">
+                                <AiOutlineShoppingCart />
+                                <span>Cart</span>
+                            </Link>
                         </li>
                     </ul>
                 </div>

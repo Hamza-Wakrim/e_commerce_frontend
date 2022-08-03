@@ -1,0 +1,46 @@
+.order {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    gap: 20px;
+    border: 1px solid #ddd;
+    margin: 10px;
+}
+
+@media (max-width: 767px) {
+    .order {
+        flex-direction: column;
+    }
+}
+
+.order .center {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.order .center .status {
+    background-color: #f1c40f66;
+    padding: 5px;
+    width: fit-content;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.order .right button {
+    padding: 10px 20px;
+    background-color: #f1c40f;
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}

@@ -19,6 +19,20 @@ const ProductPage = () => {
     const product = products.filter((product) => product.name === id)[0];
     const featuredProducts = products.filter((product) => product.featured);
 
+    const filterBtns = () => {
+        const btns = document.querySelectorAll(".btns button");
+        btns.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                btns.forEach((btn) => {
+                    btn.classList.remove("active");
+                });
+                btn.classList.add("active");
+            });
+        });
+    };
+
+    filterBtns();
+
     return (
         <div>
             {product ? (
@@ -95,6 +109,7 @@ const ProductPage = () => {
                                         onClick={() =>
                                             setInfoKey("description")
                                         }
+                                        className="active"
                                     >
                                         DESCRIPTION
                                     </button>
@@ -131,12 +146,7 @@ const ProductPage = () => {
                                 <h2 className="title">Customers Also Viewed</h2>
                                 <div className="products">
                                     {featuredProducts.map((product) => (
-                                        <Product
-                                            key={product.id}
-                                            name={product.name}
-                                            image={product.image}
-                                            rating={5}
-                                        />
+                                        <Product product={product} rating={5} />
                                     ))}
                                 </div>
                             </div>

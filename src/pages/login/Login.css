@@ -1,0 +1,115 @@
+.login-register {
+    background-color: #eee;
+    width: 100%;
+    height: calc(100vh - 62px);
+}
+
+.login-register .card {
+    background-color: #fff;
+    width: 400px;
+    height: 450px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media (max-width: 576px) {
+    .login-register .card {
+        width: 320px;
+    }
+}
+
+.login-register .btns {
+    width: 220px;
+    height: 50px;
+    overflow: hidden;
+    margin: 20px auto;
+    background-color: #eee;
+    position: relative;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+}
+
+.login-register .btn {
+    width: 110px;
+    height: 100%;
+    background-color: #f1c40f;
+    border-radius: 50px;
+    position: absolute;
+    transition: all var(--main-transition) linear;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    -webkit-transition: all var(--main-transition) linear;
+    -moz-transition: all var(--main-transition) linear;
+    -ms-transition: all var(--main-transition) linear;
+    -o-transition: all var(--main-transition) linear;
+}
+
+.login-register .btns .login-btn,
+.login-register .btns .register-btn {
+    width: 110px;
+    height: 100%;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    position: relative;
+    z-index: 2;
+}
+
+.login-register .card .login,
+.login-register .card .register {
+    width: fit-content;
+    width: 70%;
+    position: absolute;
+    top: 120px;
+    transition: all var(--main-transition) linear;
+    -webkit-transition: all var(--main-transition) linear;
+    -moz-transition: all var(--main-transition) linear;
+    -ms-transition: all var(--main-transition) linear;
+    -o-transition: all var(--main-transition) linear;
+}
+
+.login-register .card .login {
+    left: 50px;
+}
+
+.login-register .card .register {
+    left: 450px;
+}
+
+.login-register .login input,
+.login-register .register input {
+    display: block;
+    width: 100%;
+    border: none;
+    padding: 10px;
+    outline: none;
+    border-bottom: 1px solid rgb(47, 42, 42);
+    margin-bottom: 20px;
+}
+
+.login-register .login input[type="checkbox"],
+.login-register .register input[type="checkbox"] {
+    width: fit-content;
+    display: inline;
+}
+
+.login-register .login button,
+.login-register .register button {
+    width: 80%;
+    border: none;
+    padding: 10px 20px;
+    background-color: #f1c40f;
+    outline: none;
+    margin: 30px 0;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+}
