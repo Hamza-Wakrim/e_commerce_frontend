@@ -21,7 +21,7 @@ export const productsContext = React.createContext();
 
 function App() {
     const [categories, products] = Api();
-
+    console.log(products);
     return (
         <productsContext.Provider value={{ products, categories }}>
             <div className="App">

@@ -19,6 +19,10 @@ const Api = () => {
             .catch((err) => console.log(err));
     };
 
+    // const register = () => {
+    //     axios.post("");
+    // };
+
     useEffect(() => {
         getCategories();
         getProducts();

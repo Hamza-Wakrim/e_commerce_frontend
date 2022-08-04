@@ -21,6 +21,10 @@
     align-items: center;
 }
 
+.product-page .image img {
+    max-width: 500px;
+}
+
 .product-page .info {
     width: 45%;
     height: 100%;

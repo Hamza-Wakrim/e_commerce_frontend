@@ -37,6 +37,7 @@
 
 .product .rating {
     display: flex;
+    margin: 0 auto;
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -55,7 +56,7 @@
 .product .image {
     display: block;
     margin: 0 auto;
-    width: 80px;
+    width: 150px;
 }
 
 .product .price {
