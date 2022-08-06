@@ -1,4 +1,4 @@
-import React, { useContext, useLayoutEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Footer, Header, Product } from "../../components";
 import { BsBagFill } from "react-icons/bs";
 import { productsContext } from "../../App";
@@ -12,14 +12,26 @@ const Cart = () => {
     const [total, setTotal] = useState(0);
     let user = JSON.parse(localStorage.getItem("user"));
 
-    useLayoutEffect(() => {
+    useEffect(() => {
+        getCartProducts();
+    }, []);
+
+    async function deleteItem(id) {
+        await fetch(
+            `https://backend.aromapedia.ma/api/carts/${id}?api_token=${user.api_token}`,
+            { method: "DELETE" }
+        );
+        getCartProducts();
+    }
+
+    function getCartProducts() {
         axios
             .get(
                 `https://backend.aromapedia.ma/api/carts?api_token=${user.api_token}&with=food`
             )
             .then((res) => setCartProducts(res.data.data))
             .catch((err) => console.log(err));
-    }, []);
+    }
 
     return (
         <div>
@@ -37,13 +49,14 @@ const Cart = () => {
                             <h2 className="cart-items-title">
                                 cart ({cartProducts.length})
                             </h2>
-                            {cartProducts ? (
+                            {cartProducts.length > 0 ? (
                                 cartProducts.map((cartProduct) => (
                                     <Item
                                         key={cartProduct.id}
                                         item={cartProduct}
                                         setTotal={setTotal}
                                         token={user.api_token}
+                                        deleteItem={deleteItem}
                                     />
                                 ))
                             ) : (

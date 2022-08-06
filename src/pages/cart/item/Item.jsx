@@ -1,19 +1,13 @@
-import axios from "axios";
 import React, { useEffect } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import useCounter from "../../../hooks/useCounter";
-const Item = ({ item, setTotal, token }) => {
+
+const Item = ({ item, setTotal, deleteItem }) => {
     const [qty] = useCounter(item.quantity);
     const card = item.food;
     useEffect(() => {
         setTotal((prevTotale) => (prevTotale += card.price * qty));
     }, []);
-
-    const deleteItem = () => {
-        axios.delete(
-            `https://backend.aromapedia.ma/api/carts/${item.id}?api_token=${token}`
-        );
-    };
 
     return (
         <div>
@@ -31,7 +25,10 @@ const Item = ({ item, setTotal, token }) => {
                     <div className="product-price">{card.price} DH</div>
                 </div>
                 <div className="box">
-                    <button onClick={deleteItem} className="delete">
+                    <button
+                        onClick={() => deleteItem(item.id)}
+                        className="delete"
+                    >
                         <AiFillDelete />
                     </button>
                     <div className="quantity">

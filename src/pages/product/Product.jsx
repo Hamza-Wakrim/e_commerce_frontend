@@ -35,7 +35,6 @@ const ProductPage = () => {
         <div>
             {product ? (
                 <>
-                    {console.log(product.description)}
                     <Header />
                     <div className="product-page">
                         <div className="container">
