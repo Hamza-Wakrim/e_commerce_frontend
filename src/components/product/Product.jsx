@@ -1,10 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineShoppingCart, AiFillStar } from "react-icons/ai";
+import axios from "axios";
 import "./product.css";
 
-const Product = ({ product: { name, price, media }, rating, button }) => {
+const Product = ({ product: { id, name, price, media }, rating, button }) => {
     const productURL = `/product/${name}`;
+    const addToCart = () => {
+        const user = JSON.parse(localStorage.getItem("user"));
+        axios.post(
+            `https://backend.aromapedia.ma/api/carts?api_token=${
+                user.api_token
+            }&food_id=${id}&quantity=${1}`
+        );
+    };
     return (
         <div className="product">
             <Link to={productURL} className="name">
@@ -31,7 +40,7 @@ const Product = ({ product: { name, price, media }, rating, button }) => {
                 ""
             )}
             {button ? (
-                <button className="add-to-cart">
+                <button onClick={addToCart} className="add-to-cart">
                     <AiOutlineShoppingCart />
                     <span>ADD TO CART</span>
                 </button>

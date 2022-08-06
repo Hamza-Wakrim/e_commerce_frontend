@@ -17,8 +17,7 @@ const Header = () => {
     const [level3, setLevel3] = useState(false);
     const { categories } = useContext(productsContext);
     const { products } = useContext(productsContext);
-    let login = false;
-
+    let user = JSON.parse(localStorage.getItem("user"));
     return (
         <header>
             <div className="container">
@@ -102,10 +101,10 @@ const Header = () => {
                 <div className="account">
                     <ul>
                         <li>
-                            {login ? (
-                                <Link to="/user/id">
+                            {user ? (
+                                <Link to={`/user/${user.id}`}>
                                     <AiOutlineUser />
-                                    <span>Account</span>
+                                    <span>{user.name}</span>
                                 </Link>
                             ) : (
                                 <Link to="/login">Login</Link>

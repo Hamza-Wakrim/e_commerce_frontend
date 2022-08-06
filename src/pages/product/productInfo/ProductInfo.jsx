@@ -3,9 +3,16 @@ import React from "react";
 import useCounter from "../../../hooks/useCounter";
 // Import Icons
 import { AiOutlineShoppingCart, AiFillStar } from "react-icons/ai";
+import axios from "axios";
 
 const ProductInfo = ({ product }) => {
-    const [counter, increment, decrement] = useCounter(1);
+    const [qty, increment, decrement] = useCounter(1);
+    const addToCart = () => {
+        const user = JSON.parse(localStorage.getItem("user"));
+        axios.post(
+            `https://backend.aromapedia.ma/api/carts?api_token=${user.api_token}&food_id=${product.id}&quantity=${qty}`
+        );
+    };
     return (
         <div>
             <div className="box">
@@ -32,15 +39,6 @@ const ProductInfo = ({ product }) => {
                         <span>Origin:</span>
                         {product.origine_country}
                     </p>
-                    {/* <div className="size">
-                                        <span>Choose Size *</span>
-                                        <br />
-                                        {product.size.map((e) => (
-                                            <button onClick={() => {}} key={e}>
-                                                {e}
-                                            </button>
-                                        ))}
-                                    </div> */}
                     <p className="price">
                         ${product.price - product.discount_price}
                     </p>
@@ -48,12 +46,12 @@ const ProductInfo = ({ product }) => {
                         <button onClick={decrement} className="btn">
                             -
                         </button>
-                        <p className="counter">{counter}</p>
+                        <p className="counter">{qty}</p>
                         <button onClick={increment} className="btn">
                             +
                         </button>
                     </div>
-                    <button onClick={() => {}} className="add-to-cart">
+                    <button onClick={addToCart} className="add-to-cart">
                         <AiOutlineShoppingCart className="icon" />
                         Add To Cart
                     </button>

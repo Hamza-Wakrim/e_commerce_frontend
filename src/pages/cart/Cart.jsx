@@ -1,14 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useLayoutEffect, useState } from "react";
 import { Footer, Header, Product } from "../../components";
 import { BsBagFill } from "react-icons/bs";
-import { AiFillDelete } from "react-icons/ai";
 import { productsContext } from "../../App";
-import useCounter from "../../hooks/useCounter";
+import axios from "axios";
+import Item from "./item/Item";
 import "./Cart.css";
 
 const Cart = () => {
     const { products } = useContext(productsContext);
-    const [qty, increment, decrement] = useCounter(1);
+    const [cartProducts, setCartProducts] = useState([]);
+    const [total, setTotal] = useState(0);
+    let user = JSON.parse(localStorage.getItem("user"));
+
+    useLayoutEffect(() => {
+        axios
+            .get(
+                `https://backend.aromapedia.ma/api/carts?api_token=${user.api_token}&with=food`
+            )
+            .then((res) => setCartProducts(res.data.data))
+            .catch((err) => console.log(err));
+    }, []);
+
     return (
         <div>
             <Header />
@@ -22,93 +34,35 @@ const Cart = () => {
                     </div>
                     <div className="cart-body">
                         <div className="cart-items">
-                            <h2 className="cart-items-title">cart (3)</h2>
-                            <div className="cart-item">
-                                <div className="box">
-                                    <div className="product-image">
-                                        <img
-                                            src="https://via.placeholder.com/80"
-                                            alt=""
-                                        />
-                                    </div>
-                                    <div className="product-info">
-                                        <div className="product-name">
-                                            Product Name
-                                        </div>
-                                        <div className="product-origine">
-                                            <span>Origine: </span> Morocco
-                                        </div>
-                                    </div>
-                                    <div className="product-price">
-                                        299.00 DH
-                                    </div>
-                                </div>
-                                <div className="box">
-                                    <button className="delete">
-                                        <AiFillDelete />
-                                    </button>
-                                    <div className="quantity">
-                                        <button
-                                            onClick={decrement}
-                                            className="decrement"
-                                        >
-                                            -
-                                        </button>
-                                        <div className="num">{qty}</div>
-                                        <button
-                                            onClick={increment}
-                                            className="increment"
-                                        >
-                                            +
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+                            <h2 className="cart-items-title">
+                                cart ({cartProducts.length})
+                            </h2>
+                            {cartProducts ? (
+                                cartProducts.map((cartProduct) => (
+                                    <Item
+                                        key={cartProduct.id}
+                                        item={cartProduct}
+                                        setTotal={setTotal}
+                                        token={user.api_token}
+                                    />
+                                ))
+                            ) : (
+                                <p
+                                    style={{
+                                        padding: "10px",
+                                        fontWeight: "bold",
+                                    }}
+                                >
+                                    No Items To Show
+                                </p>
+                            )}
                         </div>
                         <div className="cart-total">
                             <h2 className="cart-total-title">Subtotal</h2>
                             <div className="total">
                                 <div className="total-price">
-                                    <span>Total Items: </span>1000 DH
-                                </div>
-                                <div className="tax">
-                                    <span>Tax Price: </span>200 DH
-                                </div>
-                                <div className="shipping">
-                                    <p>Shipping: </p>
-                                    <div>
-                                        <input
-                                            type="radio"
-                                            name="shipping"
-                                            id="regular"
-                                            checked={true}
-                                        />
-                                        <label htmlFor="regular">
-                                            Regular 20 DH
-                                        </label>
-                                    </div>
-                                    <div>
-                                        <input
-                                            type="radio"
-                                            name="shipping"
-                                            id="fast"
-                                        />
-                                        <label htmlFor="fast">Fast 50 DH</label>
-                                    </div>
-                                </div>
-                                <div className="discount">
-                                    <label htmlFor="discount">
-                                        Discount Coupon :
-                                    </label>
-                                    <input
-                                        type="text"
-                                        placeholder="Discount Coupon"
-                                        name="discount"
-                                    />
-                                    <input type="submit" value="Discount" />
-                                </div>
-                                <div className="total-price">
-                                    <span>Total Price: </span>1220 DH
+                                    <span>Total Items: </span>
+                                    {total} DH
                                 </div>
                                 <button className="checkout">Checkout</button>
                             </div>

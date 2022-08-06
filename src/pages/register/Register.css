@@ -1,4 +1,4 @@
-.login {
+.register {
     background-color: #eee;
     width: 100%;
     height: calc(100vh - 62px);
@@ -17,7 +17,7 @@
     background-color: #ff00009d;
 }
 
-.login .card {
+.register .card {
     background-color: #fff;
     padding: 20px;
     width: 320px;
@@ -32,18 +32,18 @@
     -o-transform: translate(-50%, -50%);
 }
 
-.login .card .login-title {
+.register .card .register-title {
     text-align: center;
     font-size: 25px;
     margin-bottom: 30px;
     font-weight: bold;
 }
 
-.login .card form {
+.register .card form {
     width: 100%;
 }
 
-.login form input {
+.register form input {
     display: block;
     width: 100%;
     border: none;
@@ -53,16 +53,12 @@
     margin-bottom: 20px;
 }
 
-.login form input[type="checkbox"] {
+.register form input[type="checkbox"] {
     width: fit-content;
     display: inline;
 }
 
-.login .card a {
-    display: inline;
-}
-
-.login form button {
+.register form button {
     width: 80%;
     border: none;
     padding: 10px 20px;
@@ -75,4 +71,15 @@
     -moz-border-radius: 50px;
     -ms-border-radius: 50px;
     -o-border-radius: 50px;
+}
+
+.empty {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #ff00009d;
+    margin-bottom: 10px;
 }

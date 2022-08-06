@@ -9,6 +9,7 @@ import {
     Cart,
     Login,
     Profile,
+    Register,
 } from "./pages";
 // Import API
 import Api from "./API/Api";
@@ -21,7 +22,6 @@ export const productsContext = React.createContext();
 
 function App() {
     const [categories, products] = Api();
-    console.log(products);
     return (
         <productsContext.Provider value={{ products, categories }}>
             <div className="App">
@@ -38,7 +38,8 @@ function App() {
                             />
                             <Route path="/cart" element={<Cart />} />
                             <Route path="/login" element={<Login />} />
-                            <Route path="/profile" element={<Profile />} />
+                            <Route path="/register" element={<Register />} />
+                            <Route path="/user/:id" element={<Profile />} />
                         </Routes>
                     </ScrollToTop>
                 </BrowserRouter>
