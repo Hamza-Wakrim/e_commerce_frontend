@@ -11,7 +11,7 @@ import { productsContext } from "../../App";
 import "./Shop.css";
 
 const Shop = () => {
-    const { products } = useContext(productsContext);
+    const { products, user } = useContext(productsContext);
     const [name, setName] = useState("");
     const [active, setActive] = useState(false);
     const { productCategoy } = useParams();
@@ -25,7 +25,11 @@ const Shop = () => {
             <Header />
             <div className="shop">
                 {active ? (
-                    <QuickView setActive={setActive} product={product} />
+                    <QuickView
+                        setActive={setActive}
+                        product={product}
+                        user={user}
+                    />
                 ) : (
                     ""
                 )}
@@ -43,9 +47,7 @@ const Shop = () => {
                         productsCat.map((product) => (
                             <Product
                                 key={product.id}
-                                name={product.name}
-                                image={product.image}
-                                price={product.price}
+                                product={product}
                                 setName={setName}
                                 setActive={setActive}
                             />

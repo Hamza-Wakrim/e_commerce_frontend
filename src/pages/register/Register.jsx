@@ -66,7 +66,10 @@ const Register = () => {
             .post(
                 `https://backend.aromapedia.ma/api/register?name=${registerInfo.userName}&email=${registerInfo.email}&password=${registerInfo.password}&first_name=${registerInfo.fName}&last_name=${registerInfo.lName}`
             )
-            .then((res) => setUser(res.data))
+            .then((res) => {
+                setUser(res.data);
+                localStorage.setItem("user", JSON.stringify(res.data.data));
+            })
             .catch((err) => setError(err));
     };
 

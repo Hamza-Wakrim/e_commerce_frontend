@@ -15,9 +15,7 @@ const Header = () => {
     const [level1, setLevel1] = useState(false);
     const [level2, setLevel2] = useState(false);
     const [level3, setLevel3] = useState(false);
-    const { categories } = useContext(productsContext);
-    const { products } = useContext(productsContext);
-    let user = JSON.parse(localStorage.getItem("user"));
+    const { categories, products, user } = useContext(productsContext);
     return (
         <header>
             <div className="container">

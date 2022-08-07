@@ -6,11 +6,22 @@ import { FaFacebookF, FaTwitter, FaPinterestP, FaTimes } from "react-icons/fa";
 // Import Link
 import { Link } from "react-router-dom";
 // Imort CSS
+import axios from "axios";
 import "./QuickView.css";
 
-const QuickView = ({ product, setActive }) => {
-    const [counter, increment, decrement] = useCounter(1);
+const QuickView = ({ product, setActive, user }) => {
+    const [qty, increment, decrement] = useCounter(1);
     const productURL = `/product/${product.name}`;
+
+    const addToCart = () => {
+        if (user) {
+            axios.post(
+                `https://backend.aromapedia.ma/api/carts?api_token=${user.api_token}&food_id=${product.id}&quantity=${qty}`
+            );
+        } else {
+            window.location.pathname = "/login";
+        }
+    };
 
     return (
         <div className="quick-view">
@@ -22,7 +33,7 @@ const QuickView = ({ product, setActive }) => {
                     />
                     <div className="product-image">
                         <Link to={productURL}>
-                            <img src={product.image} alt="" />
+                            <img src={product.media[0].url} alt="" />
                         </Link>
                     </div>
                     <div className="product-info">
@@ -37,27 +48,20 @@ const QuickView = ({ product, setActive }) => {
                             <span>Origin: </span>
                             {product.origine_country}
                         </div>
-                        {/* <div className="product-size">
-                            <span>Choose Size*</span>
-                            <div className="btns">
-                                {product.size.map((s) => (
-                                    <button key={s} className="size">
-                                        {s}
-                                    </button>
-                                ))}
-                            </div>
-                        </div> */}
                         <div className="product-price">
                             ${product.price - product.discount_price}
                         </div>
                         <div className="product-cart">
                             <div className="product-counter">
                                 <button onClick={decrement}>-</button>
-                                <p>{counter}</p>
+                                <p>{qty}</p>
                                 <button onClick={increment}>+</button>
                             </div>
                             <div className="btns">
-                                <button className="btn cart">
+                                <button
+                                    onClick={addToCart}
+                                    className="btn cart"
+                                >
                                     ADD TO CART
                                 </button>
                                 <button className="btn list">WISH LIST</button>

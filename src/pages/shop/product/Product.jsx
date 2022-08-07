@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import "./product.css";
 import { FaFacebookF, FaTwitter, FaPinterestP } from "react-icons/fa";
 
-const Product = ({ name, image, price, setName, setActive }) => {
+const Product = ({ product, setName, setActive }) => {
+    const { name, price, media } = product;
     const productURL = `/product/${name}`;
 
     const view = () => {
@@ -11,11 +12,13 @@ const Product = ({ name, image, price, setName, setActive }) => {
         setName(name);
     };
 
+    console.log(product);
+
     return (
         <div className="product">
             <div className="image">
                 <Link to={productURL}>
-                    <img src={image} alt="" className="image" />
+                    <img src={media[0].url} alt="" className="image" />
                 </Link>
             </div>
             <div className="info">

@@ -4,11 +4,13 @@ import Order from "./order/Order";
 import { BsFillPencilFill } from "react-icons/bs";
 import { productsContext } from "../../App";
 import "./Profile.css";
+import { Navigate } from "react-router-dom";
 
 const Profile = () => {
-    const { products } = useContext(productsContext);
+    const { products, user } = useContext(productsContext);
     return (
         <div>
+            {!user && <Navigate to="/login" />}
             <Header />
             <main className="profile">
                 <div className="container">
@@ -25,12 +27,15 @@ const Profile = () => {
                                     </div>
                                 </div>
                                 <div className="info">
-                                    <div className="user-name">User Name</div>
-                                    <div className="user-email">Email</div>
-                                    <div className="user-phone">Phone</div>
-                                    <div className="user-gender">gender</div>
+                                    <div className="user-name">{user.name}</div>
+                                    <div className="user-email">
+                                        {user.email}
+                                    </div>
+                                    <div className="user-phone">
+                                        {user.phone}
+                                    </div>
                                     <div className="user-birthday">
-                                        birthday
+                                        {user.birthday}
                                     </div>
                                 </div>
                                 <button type="button" className="change">
@@ -47,10 +52,14 @@ const Profile = () => {
                                     </div>
                                 </div>
                                 <div className="adresses">
-                                    <div className="full-name">Full Name</div>
-                                    <div className="adresse">Adresse</div>
-                                    <div className="region">Region</div>
-                                    <div className="phone">Phone</div>
+                                    <div className="full-name">
+                                        {user.first_name} {user.last_name}
+                                    </div>
+                                    <div className="adresse">
+                                        {user.address}
+                                    </div>
+                                    <div className="region">{user.city}</div>
+                                    <div className="phone">{user.phone}</div>
                                 </div>
                             </div>
                         </div>
@@ -70,7 +79,10 @@ const Profile = () => {
                         <div className="products">
                             {products.map((product) =>
                                 product.featured ? (
-                                    <Product product={product} />
+                                    <Product
+                                        key={product.id}
+                                        product={product}
+                                    />
                                 ) : (
                                     ""
                                 )

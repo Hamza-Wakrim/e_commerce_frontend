@@ -1,19 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineShoppingCart, AiFillStar } from "react-icons/ai";
 import axios from "axios";
+import { productsContext } from "../../App";
 import "./product.css";
 
 const Product = ({ product: { id, name, price, media }, rating, button }) => {
     const productURL = `/product/${name}`;
+    const { user } = useContext(productsContext);
     const addToCart = () => {
-        const user = JSON.parse(localStorage.getItem("user"));
-        axios.post(
-            `https://backend.aromapedia.ma/api/carts?api_token=${
-                user.api_token
-            }&food_id=${id}&quantity=${1}`
-        );
+        if (user) {
+            axios.post(
+                `https://backend.aromapedia.ma/api/carts?api_token=${
+                    user.api_token
+                }&food_id=${id}&quantity=${1}`
+            );
+        } else {
+            window.location.pathname = "/login";
+        }
     };
+
     return (
         <div className="product">
             <Link to={productURL} className="name">

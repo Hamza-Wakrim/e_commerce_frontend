@@ -3,7 +3,7 @@ import "./Order.css";
 
 const Order = () => {
     return (
-        <div className="order">
+        <div className="order-card">
             <div className="left">
                 <img src="https://via.placeholder.com/80" alt="img" />
             </div>

@@ -1,4 +1,4 @@
-.order {
+.order-card {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -14,14 +14,14 @@
     }
 }
 
-.order .center {
+.order-card .center {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.order .center .status {
+.order-card .center .status {
     background-color: #f1c40f66;
     padding: 5px;
     width: fit-content;
@@ -32,7 +32,7 @@
     -o-border-radius: 5px;
 }
 
-.order .right button {
+.order-card .right button {
     padding: 10px 20px;
     background-color: #f1c40f;
     border: 0;

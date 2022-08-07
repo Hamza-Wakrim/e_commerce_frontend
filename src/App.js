@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 // Import Pages
 import {
     Home,
@@ -10,6 +10,7 @@ import {
     Login,
     Profile,
     Register,
+    Order,
 } from "./pages";
 // Import API
 import Api from "./API/Api";
@@ -22,8 +23,13 @@ export const productsContext = React.createContext();
 
 function App() {
     const [categories, products] = Api();
+    const user = JSON.parse(localStorage.getItem("user"));
+    const [total, setTotal] = useState(0);
+
     return (
-        <productsContext.Provider value={{ products, categories }}>
+        <productsContext.Provider
+            value={{ products, categories, total, setTotal, user }}
+        >
             <div className="App">
                 <BrowserRouter>
                     <ScrollToTop>
@@ -40,6 +46,7 @@ function App() {
                             <Route path="/login" element={<Login />} />
                             <Route path="/register" element={<Register />} />
                             <Route path="/user/:id" element={<Profile />} />
+                            <Route path="/order" element={<Order />} />
                         </Routes>
                     </ScrollToTop>
                 </BrowserRouter>

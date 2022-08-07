@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 // import Hook
 import useCounter from "../../../hooks/useCounter";
 // Import Icons
 import { AiOutlineShoppingCart, AiFillStar } from "react-icons/ai";
+import { productsContext } from "../../../App";
 import axios from "axios";
 
 const ProductInfo = ({ product }) => {
     const [qty, increment, decrement] = useCounter(1);
+    const { user } = useContext(productsContext);
     const addToCart = () => {
-        const user = JSON.parse(localStorage.getItem("user"));
-        axios.post(
-            `https://backend.aromapedia.ma/api/carts?api_token=${user.api_token}&food_id=${product.id}&quantity=${qty}`
-        );
+        if (user) {
+            axios.post(
+                `https://backend.aromapedia.ma/api/carts?api_token=${user.api_token}&food_id=${product.id}&quantity=${qty}`
+            );
+        } else {
+            window.location.pathname = "/login";
+        }
     };
     return (
         <div>
