@@ -25,7 +25,7 @@ const Product = ({product: {id, name, price, media}, rating, button}) => {
     return (
         <div className="product">
             <Link to={productURL} className="name">
-                {name}
+                <span>{name}</span>
             </Link>
             <Link to={productURL}>
                 <img src={media[0].url} alt="" className="image"/>
@@ -38,7 +38,7 @@ const Product = ({product: {id, name, price, media}, rating, button}) => {
                     <AiFillStar className="icon-star"/>
                     <AiFillStar className="icon-star"/>
                 </div>
-                <div className="rate">{rating}</div>
+                <div className="rate">{rating} Reviews</div>
             </div>
             {price ? (
                 <div className="price">

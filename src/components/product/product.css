@@ -28,8 +28,9 @@
 .product .name {
     font-family: Nunito, Clear Sans, arial, sans-serif;
     color: var(--main-color);
-    font-weight: 700;
+    font-weight: 550;
     text-transform: none;
+    text-decoration: none;
     font-size: 1em;
     margin-bottom: 10px;
     text-align: center;
@@ -60,13 +61,17 @@
 }
 
 .product .price {
-    padding: 20px;
+    padding: 13px;
     background-color: #f6f5f2;
+    color:#6D665F;
+    font-weight: normal;
     width: 250px;
+    height: 43px;
 }
 
 .product .price span {
     font-family: Arial, Helvetica, sans-serif;
+    color: #565454;
     font-weight: bold;
 }
 
