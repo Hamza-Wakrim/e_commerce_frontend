@@ -15,7 +15,10 @@ const Header = () => {
     const [level1, setLevel1] = useState(false);
     const [level2, setLevel2] = useState(false);
     const [level3, setLevel3] = useState(false);
-    const { categories, products, user } = useContext(productsContext);
+    const { categories, products, user, cartProducts } = useContext(
+        productsContext
+    );
+
     return (
         <header>
             <div className="container">
@@ -38,10 +41,6 @@ const Header = () => {
                         <li onClick={() => setLevel2(true)} className="level-1">
                             <span>Shop</span>
                             <ul className={level2 ? "active" : ""}>
-                                {/* <FaTimes
-                                    className="icon"
-                                    onClick={setOpen2(false)}
-                                /> */}
                                 {categories.map((category) => (
                                     <li
                                         onClick={() => setLevel3(true)}
@@ -109,7 +108,10 @@ const Header = () => {
                             )}
                         </li>
                         <li>
-                            <Link to="/cart">
+                            <Link to="/cart" className="cart">
+                                {cartProducts.length > 0 ? (
+                                    <i>{cartProducts.length}</i>
+                                ) : null}
                                 <AiOutlineShoppingCart />
                                 <span>Cart</span>
                             </Link>

@@ -18,6 +18,7 @@ import Api from "./API/Api";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 // Import Css
 import "./App.css";
+import axios from "axios";
 
 export const productsContext = React.createContext();
 
@@ -25,10 +26,43 @@ function App() {
     const [categories, products] = Api();
     const user = JSON.parse(localStorage.getItem("user"));
     const [total, setTotal] = useState(0);
+    const [cartProducts, setCartProducts] = useState([]);
+
+    useEffect(() => {
+        getCartProducts();
+    }, []);
+
+    async function deleteItem(id) {
+        if (!user) return;
+        await fetch(
+            `https://backend.aromapedia.ma/api/carts/${id}?api_token=${user.api_token}`,
+            { method: "DELETE" }
+        );
+        getCartProducts();
+    }
+
+    function getCartProducts() {
+        if (!user) return;
+        axios
+            .get(
+                `https://backend.aromapedia.ma/api/carts?api_token=${user.api_token}&with=food`
+            )
+            .then((res) => setCartProducts(res.data.data))
+            .catch((err) => console.log(err));
+    }
 
     return (
         <productsContext.Provider
-            value={{ products, categories, total, setTotal, user }}
+            value={{
+                products,
+                categories,
+                total,
+                setTotal,
+                user,
+                cartProducts,
+                deleteItem,
+                getCartProducts,
+            }}
         >
             <div className="App">
                 <BrowserRouter>

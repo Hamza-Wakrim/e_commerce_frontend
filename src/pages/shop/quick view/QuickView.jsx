@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 // Import Hooks
 import useCounter from "../../../hooks/useCounter";
@@ -9,10 +9,12 @@ import { Link } from "react-router-dom";
 // Imort CSS
 import axios from "axios";
 import "./QuickView.css";
+import { productsContext } from "../../../App";
 
-const QuickView = ({ product, setActive, user }) => {
+const QuickView = ({ product, setActive }) => {
     const [qty, increment, decrement] = useCounter(1);
     const productURL = `/product/${product.name}`;
+    const { getCartProducts, user } = useContext(productsContext);
     const navigate = useNavigate();
     const addToCart = () => {
         if (user) {
@@ -21,6 +23,7 @@ const QuickView = ({ product, setActive, user }) => {
                     user.api_token
                 }&food_id=${product.id}&quantity=${1}`
             );
+            getCartProducts();
         } else {
             navigate("/login", { replacea: true });
         }
@@ -62,7 +65,7 @@ const QuickView = ({ product, setActive, user }) => {
                             </div>
                             <div className="btns">
                                 <button
-                                    onClick={addToCart}
+                                    onClick={() => addToCart(product.id)}
                                     className="btn cart"
                                 >
                                     ADD TO CART

@@ -7,7 +7,7 @@ import "./product.css";
 
 const Product = ({ product: { id, name, price, media }, rating, button }) => {
     const productURL = `/product/${name}`;
-    const { user } = useContext(productsContext);
+    const { user, getCartProducts } = useContext(productsContext);
     const navigate = useNavigate();
     const addToCart = () => {
         if (user) {
@@ -16,6 +16,7 @@ const Product = ({ product: { id, name, price, media }, rating, button }) => {
                     user.api_token
                 }&food_id=${id}&quantity=${1}`
             );
+            getCartProducts();
         } else {
             navigate("/login", { replacea: true });
         }
@@ -47,8 +48,8 @@ const Product = ({ product: { id, name, price, media }, rating, button }) => {
                 ""
             )}
             {button ? (
-                <button onClick={addToCart} className="add-to-cart">
-                    <AiOutlineShoppingCart />
+                <button onClick={() => addToCart()} className="add-to-cart">
+                    <AiOutlineShoppingCart className="icon" />
                     <span>ADD TO CART</span>
                 </button>
             ) : (
