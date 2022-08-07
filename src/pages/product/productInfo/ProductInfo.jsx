@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 // import Hook
 import useCounter from "../../../hooks/useCounter";
 // Import Icons
@@ -9,13 +10,16 @@ import axios from "axios";
 const ProductInfo = ({ product }) => {
     const [qty, increment, decrement] = useCounter(1);
     const { user } = useContext(productsContext);
+    const navigate = useNavigate();
     const addToCart = () => {
         if (user) {
             axios.post(
-                `https://backend.aromapedia.ma/api/carts?api_token=${user.api_token}&food_id=${product.id}&quantity=${qty}`
+                `https://backend.aromapedia.ma/api/carts?api_token=${
+                    user.api_token
+                }&food_id=${product.id}&quantity=${1}`
             );
         } else {
-            window.location.pathname = "/login";
+            navigate("/login", { replacea: true });
         }
     };
     return (
