@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 // import Hook
 import useCounter from "../../../hooks/useCounter";
 // Import Icons
 import { AiOutlineShoppingCart, AiFillStar } from "react-icons/ai";
 import { productsContext } from "../../../App";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const ProductInfo = ({ product }) => {
     const [qty, increment, decrement] = useCounter(1);
-    const { user } = useContext(productsContext);
+    const { getCartProducts, user } = useContext(productsContext);
     const navigate = useNavigate();
     const addToCart = () => {
         if (user) {
@@ -18,6 +18,7 @@ const ProductInfo = ({ product }) => {
                     user.api_token
                 }&food_id=${product.id}&quantity=${1}`
             );
+            getCartProducts();
         } else {
             navigate("/login", { replacea: true });
         }
@@ -60,7 +61,10 @@ const ProductInfo = ({ product }) => {
                             +
                         </button>
                     </div>
-                    <button onClick={addToCart} className="add-to-cart">
+                    <button
+                        onClick={() => addToCart(product.id)}
+                        className="add-to-cart"
+                    >
                         <AiOutlineShoppingCart className="icon" />
                         Add To Cart
                     </button>

@@ -1,36 +1,20 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Footer, Header, Product } from "../../components";
 import { BsBagFill } from "react-icons/bs";
 import { productsContext } from "../../App";
-import axios from "axios";
 import Item from "./item/Item";
 import "./Cart.css";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-    const { products, total, setTotal, user } = useContext(productsContext);
-    const [cartProducts, setCartProducts] = useState([]);
-
-    useEffect(() => {
-        getCartProducts();
-    }, []);
-
-    async function deleteItem(id) {
-        await fetch(
-            `https://backend.aromapedia.ma/api/carts/${id}?api_token=${user.api_token}`,
-            { method: "DELETE" }
-        );
-        getCartProducts();
-    }
-
-    function getCartProducts() {
-        axios
-            .get(
-                `https://backend.aromapedia.ma/api/carts?api_token=${user.api_token}&with=food`
-            )
-            .then((res) => setCartProducts(res.data.data))
-            .catch((err) => console.log(err));
-    }
+    const {
+        products,
+        total,
+        setTotal,
+        user,
+        cartProducts,
+        deleteItem,
+    } = useContext(productsContext);
 
     return (
         <div>

@@ -238,6 +238,27 @@ header .account ul li a {
     height: 100%;
 }
 
+header .account .cart {
+    position: relative;
+}
+
+header .account .cart i {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
 /*================
 === End Header ===
 ================*/
