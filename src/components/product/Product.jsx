@@ -1,13 +1,14 @@
-import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { AiOutlineShoppingCart, AiFillStar } from "react-icons/ai";
+import React, {useContext} from "react";
+import {Link, useNavigate} from "react-router-dom";
+import {AiOutlineShoppingCart, AiFillStar} from "react-icons/ai";
+import {FaShoppingCart} from "react-icons/fa";
 import axios from "axios";
-import { productsContext } from "../../App";
+import {productsContext} from "../../App";
 import "./product.css";
 
-const Product = ({ product: { id, name, price, media }, rating, button }) => {
+const Product = ({product: {id, name, price, media}, rating, button}) => {
     const productURL = `/product/${name}`;
-    const { user } = useContext(productsContext);
+    const {user} = useContext(productsContext);
     const navigate = useNavigate();
     const addToCart = () => {
         if (user) {
@@ -17,7 +18,7 @@ const Product = ({ product: { id, name, price, media }, rating, button }) => {
                 }&food_id=${id}&quantity=${1}`
             );
         } else {
-            navigate("/login", { replacea: true });
+            navigate("/login", {replacea: true});
         }
     };
 
@@ -27,15 +28,15 @@ const Product = ({ product: { id, name, price, media }, rating, button }) => {
                 {name}
             </Link>
             <Link to={productURL}>
-                <img src={media[0].url} alt="" className="image" />
+                <img src={media[0].url} alt="" className="image"/>
             </Link>
             <div className="rating">
                 <div className="stars">
-                    <AiFillStar className="icon-star" />
-                    <AiFillStar className="icon-star" />
-                    <AiFillStar className="icon-star" />
-                    <AiFillStar className="icon-star" />
-                    <AiFillStar className="icon-star" />
+                    <AiFillStar className="icon-star"/>
+                    <AiFillStar className="icon-star"/>
+                    <AiFillStar className="icon-star"/>
+                    <AiFillStar className="icon-star"/>
+                    <AiFillStar className="icon-star"/>
                 </div>
                 <div className="rate">{rating}</div>
             </div>
@@ -48,7 +49,7 @@ const Product = ({ product: { id, name, price, media }, rating, button }) => {
             )}
             {button ? (
                 <button onClick={addToCart} className="add-to-cart">
-                    <AiOutlineShoppingCart />
+                    <FaShoppingCart/>
                     <span>ADD TO CART</span>
                 </button>
             ) : (

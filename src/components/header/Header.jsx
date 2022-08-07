@@ -1,31 +1,32 @@
-import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import React, {useState, useContext} from "react";
+import {FaShoppingCart,FaUserAlt} from "react-icons/fa";
+import {Link} from "react-router-dom";
 import "./Header.css";
 import Logo from "../../images/logo.jpg";
-import { productsContext } from "../../App";
+import {productsContext} from "../../App";
 
 import {
     AiOutlineSearch,
     AiOutlineUser,
     AiOutlineShoppingCart,
 } from "react-icons/ai";
-import { FaBars, FaTimes } from "react-icons/fa";
+import {FaBars, FaTimes} from "react-icons/fa";
 
 const Header = () => {
     const [level1, setLevel1] = useState(false);
     const [level2, setLevel2] = useState(false);
     const [level3, setLevel3] = useState(false);
-    const { categories, products, user } = useContext(productsContext);
+    const {categories, products, user} = useContext(productsContext);
     return (
         <header>
             <div className="container">
                 <nav className="navigation">
                     <div className="logo">
                         <Link to="/">
-                            <img src={Logo} alt="Logo" />
+                            <img src={Logo} alt="Logo"/>
                         </Link>
                     </div>
-                    <FaBars className="icon" onClick={() => setLevel1(true)} />
+                    <FaBars className="icon" onClick={() => setLevel1(true)}/>
                     <ul className={level1 ? "active" : ""}>
                         <FaTimes
                             className="icon"
@@ -93,24 +94,28 @@ const Header = () => {
                     </ul>
                 </nav>
                 <div className="search">
-                    <input type="text" placeholder="Search" />
-                    <AiOutlineSearch className="search-icon" />
+                    <input type="text" placeholder="Search"/>
+                    <AiOutlineSearch className="search-icon"/>
                 </div>
                 <div className="account">
                     <ul>
                         <li>
                             {user ? (
                                 <Link to={`/user/${user.id}`}>
-                                    <AiOutlineUser />
+                                    <FaUserAlt/>
                                     <span>{user.name}</span>
                                 </Link>
                             ) : (
-                                <Link to="/login">Login</Link>
+
+                                <Link to="/login">
+                                    <FaUserAlt/>
+                                    <span>Login</span>
+                                </Link>
                             )}
                         </li>
                         <li>
                             <Link to="/cart">
-                                <AiOutlineShoppingCart />
+                                <FaShoppingCart/>
                                 <span>Cart</span>
                             </Link>
                         </li>
