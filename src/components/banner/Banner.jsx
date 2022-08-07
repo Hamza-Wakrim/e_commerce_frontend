@@ -10,7 +10,7 @@ const Banner = () => {
         <>
             <div className="banner flower">
                 <h2 className="title">Everyday Essentials</h2>
-                <p>By Plant Therapy</p>
+                <p>Aromapedia Lab</p>
                 <form>
                     <input type="search" placeholder="Search The Blog" />
                     <AiOutlineSearch className="icon" />

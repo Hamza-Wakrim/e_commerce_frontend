@@ -31,10 +31,10 @@ const Header = () => {
                             className="icon"
                             onClick={() => setLevel1(false)}
                         />
-                        <li className="level-1">
-                            <span>Whats new</span>
-                            <ul></ul>
-                        </li>
+                        {/*<li className="level-1">*/}
+                        {/*    <span>Whats new</span>*/}
+                        {/*    <ul></ul>*/}
+                        {/*</li>*/}
                         <li onClick={() => setLevel2(true)} className="level-1">
                             <span>Shop</span>
                             <ul className={level2 ? "active" : ""}>
@@ -81,10 +81,10 @@ const Header = () => {
                                 ))}
                             </ul>
                         </li>
-                        <li className="level-1">
-                            <span>Learn</span>
-                            <ul></ul>
-                        </li>
+                        {/*<li className="level-1">*/}
+                        {/*    <span>Learn</span>*/}
+                        {/*    <ul></ul>*/}
+                        {/*</li>*/}
                         <li className="level-1">
                             <span>
                                 <Link to="/blog">Blog</Link>
