@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineShoppingCart, AiFillStar } from "react-icons/ai";
 import axios from "axios";
 import { productsContext } from "../../App";
@@ -8,6 +8,7 @@ import "./product.css";
 const Product = ({ product: { id, name, price, media }, rating, button }) => {
     const productURL = `/product/${name}`;
     const { user } = useContext(productsContext);
+    const navigate = useNavigate();
     const addToCart = () => {
         if (user) {
             axios.post(
@@ -16,7 +17,7 @@ const Product = ({ product: { id, name, price, media }, rating, button }) => {
                 }&food_id=${id}&quantity=${1}`
             );
         } else {
-            window.location.pathname = "/login";
+            navigate("/login", { replacea: true });
         }
     };
 

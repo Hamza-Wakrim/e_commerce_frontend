@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 // Import Hooks
 import useCounter from "../../../hooks/useCounter";
 // Ipmort Icons
@@ -12,14 +13,16 @@ import "./QuickView.css";
 const QuickView = ({ product, setActive, user }) => {
     const [qty, increment, decrement] = useCounter(1);
     const productURL = `/product/${product.name}`;
-
+    const navigate = useNavigate();
     const addToCart = () => {
         if (user) {
             axios.post(
-                `https://backend.aromapedia.ma/api/carts?api_token=${user.api_token}&food_id=${product.id}&quantity=${qty}`
+                `https://backend.aromapedia.ma/api/carts?api_token=${
+                    user.api_token
+                }&food_id=${product.id}&quantity=${1}`
             );
         } else {
-            window.location.pathname = "/login";
+            navigate("/login", { replacea: true });
         }
     };
 
