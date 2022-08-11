@@ -198,6 +198,10 @@
     color: #777;
 }
 
+.product-page .description .content a {
+    color: blue;
+}
+
 .product-page .tranding .products {
     display: grid;
     grid-template-columns: repeat(auto-fill, 250px);

@@ -35,6 +35,8 @@ const ProductInfo = ({ product }) => {
         }
     };
 
+    console.log(product);
+
     return (
         <div>
             <div className="box">

@@ -56,7 +56,7 @@ const ProductPage = () => {
                                     </button>
                                     <button
                                         onClick={() =>
-                                            setInfoKey("testReports")
+                                            setInfoKey("test_reports")
                                         }
                                     >
                                         TEST REPORTS
