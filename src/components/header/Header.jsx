@@ -1,11 +1,13 @@
 import React, { useState, useContext } from "react";
-import { FaUserAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import Logo from "../../images/logo.jpg";
 import { productsContext } from "../../App";
-
-import { AiOutlineSearch, AiOutlineShoppingCart,AiOutlineShopping,AiOutlineUser } from "react-icons/ai";
+import {
+    AiOutlineSearch,
+    AiOutlineShopping,
+    AiOutlineUser,
+} from "react-icons/ai";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 const Header = () => {
@@ -111,7 +113,7 @@ const Header = () => {
                                 {cartProducts.length > 0 ? (
                                     <i>{cartProducts.length}</i>
                                 ) : null}
-                                <AiOutlineShopping size={30}/>
+                                <AiOutlineShopping size={30} />
                                 <span>Cart</span>
                             </Link>
                         </li>
