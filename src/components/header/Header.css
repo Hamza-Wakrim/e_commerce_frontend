@@ -247,8 +247,11 @@ header .account .cart i {
     top: 0;
     left: 0;
     background-color: red;
-    width: 20px;
-    height: 20px;
+    font-family: Nunito, Clear Sans, arial, sans-serif;
+    color: #fff;
+    font-size: 14px;
+    width: 18px;
+    height: 18px;
     display: flex;
     justify-content: center;
     align-items: center;

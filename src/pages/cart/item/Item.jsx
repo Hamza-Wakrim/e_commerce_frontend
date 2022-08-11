@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import { AiFillDelete } from "react-icons/ai";
+import { AiOutlineDelete } from "react-icons/ai";
 import useCounter from "../../../hooks/useCounter";
 
 const Item = ({ item, setTotal, deleteItem }) => {
     const [qty] = useCounter(item.quantity);
     const card = item.food;
     useEffect(() => {
-        setTotal((prevTotale) => (prevTotale += card.price * qty));
+        setTotal((prevTotale) => (prevTotale+(card.price * item.quantity)));
     }, []);
 
     return (
@@ -29,7 +29,7 @@ const Item = ({ item, setTotal, deleteItem }) => {
                         onClick={() => deleteItem(item.id)}
                         className="delete"
                     >
-                        <AiFillDelete />
+                        <AiOutlineDelete size={25} fontWeight={50}/>
                     </button>
                     <div className="quantity">
                         <span>Quantity :</span>

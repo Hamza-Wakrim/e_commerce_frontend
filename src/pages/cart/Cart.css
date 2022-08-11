@@ -14,7 +14,8 @@
 }
 
 .cart .cart-title svg {
-    font-size: 40px;
+    font-family: Helvetica, sans-serif;
+    font-size: 35px;
     margin-right: 10px;
 }
 
@@ -56,12 +57,15 @@
 .cart .cart-item .product-image img {
     width: 80px;
 }
+
 .cart .cart-item .product-info {
     flex: 1;
 }
+
 .cart .cart-item .product-info .product-name {
     margin-bottom: 10px;
 }
+
 .cart .cart-item .product-info .product-origine span {
     color: #777;
 }
@@ -72,29 +76,18 @@
 }
 
 .cart .cart-item .delete {
-    padding: 10px 20px;
-    width: fit-content;
-    height: fit-content;
-    background-color: crimson;
+    width: 40px;
+    height: 30px;
+    background-color: transparent;
     border: none;
-    color: #fff;
-    font-weight: bold;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background-color var(--main-transition) linear;
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -o-border-radius: 5px;
-    -webkit-transition: background-color var(--main-transition) linear;
-    -moz-transition: background-color var(--main-transition) linear;
-    -ms-transition: background-color var(--main-transition) linear;
-    -o-transition: background-color var(--main-transition) linear;
-}
+    color: #000000;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
 
-.cart .cart-item .delete:hover {
-    background-color: rgb(157, 17, 45);
+}
+.cart .cart-item .delete:hover{
+    color: #d11027;
+    border: none;
 }
 
 .cart .cart-item .quantity {

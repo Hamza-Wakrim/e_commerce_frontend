@@ -5,7 +5,7 @@ import "./Header.css";
 import Logo from "../../images/logo.jpg";
 import { productsContext } from "../../App";
 
-import { AiOutlineSearch, AiOutlineShoppingCart } from "react-icons/ai";
+import { AiOutlineSearch, AiOutlineShoppingCart,AiOutlineShopping,AiOutlineUser } from "react-icons/ai";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 const Header = () => {
@@ -96,12 +96,12 @@ const Header = () => {
                         <li>
                             {user ? (
                                 <Link to={`/user/${user.id}`}>
-                                    <FaUserAlt />
+                                    <AiOutlineUser size={30} />
                                     <span>{user.name}</span>
                                 </Link>
                             ) : (
                                 <Link to="/login">
-                                    <FaUserAlt />
+                                    <AiOutlineUser />
                                     <span>Login</span>
                                 </Link>
                             )}
@@ -111,7 +111,7 @@ const Header = () => {
                                 {cartProducts.length > 0 ? (
                                     <i>{cartProducts.length}</i>
                                 ) : null}
-                                <AiOutlineShoppingCart />
+                                <AiOutlineShopping size={30}/>
                                 <span>Cart</span>
                             </Link>
                         </li>
