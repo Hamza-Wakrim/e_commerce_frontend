@@ -4,10 +4,16 @@ import Order from "./order/Order";
 import { BsFillPencilFill } from "react-icons/bs";
 import { productsContext } from "../../App";
 import "./Profile.css";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Profile = () => {
     const { products, user } = useContext(productsContext);
+    const navigate = useNavigate();
+    const logout = () => {
+        localStorage.removeItem("user");
+        navigate("/", { replace: true });
+    };
+
     return (
         <div>
             {!user && <Navigate to="/login" />}
@@ -15,7 +21,12 @@ const Profile = () => {
             <main className="profile">
                 <div className="container">
                     <div className="profile-container">
-                        <h2 className="profile-title">Votre compte</h2>
+                        <div className="profile-header">
+                            <h2 className="profile-title">Votre compte</h2>
+                            <button onClick={logout} className="logout">
+                                Logout
+                            </button>
+                        </div>
                         <div className="box">
                             <div className="user-info">
                                 <div className="user-info-header">
