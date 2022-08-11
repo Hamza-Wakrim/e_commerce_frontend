@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Footer, Header, Product } from "../../components";
-import { BsBagFill } from "react-icons/bs";
+import { BiShoppingBag } from "react-icons/bi";
 import { productsContext } from "../../App";
 import Item from "./item/Item";
 import "./Cart.css";
@@ -25,8 +25,8 @@ const Cart = () => {
                         <>
                             <div className="cart-header">
                                 <h1 className="cart-title">
-                                    <BsBagFill />
-                                    My Cart
+                                    <BiShoppingBag />
+                                    Cart
                                 </h1>
                             </div>
                             <div className="cart-body">
@@ -48,7 +48,7 @@ const Cart = () => {
                                         <p
                                             style={{
                                                 padding: "10px",
-                                                fontWeight: "bold",
+                                                fontWeight: "normal",
                                             }}
                                         >
                                             No Items To Show

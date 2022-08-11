@@ -1,7 +1,12 @@
+<<<<<<< HEAD
 import axios from "axios";
 import React, { useContext, useEffect } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { productsContext } from "../../../App";
+=======
+import React, { useEffect } from "react";
+import { AiOutlineDelete } from "react-icons/ai";
+>>>>>>> 78640f276f6bea6080dd64d68c2f64e63e4d3c9d
 import useCounter from "../../../hooks/useCounter";
 
 const Item = ({ item, setTotal, deleteItem }) => {
@@ -9,7 +14,7 @@ const Item = ({ item, setTotal, deleteItem }) => {
     const { user } = useContext(productsContext);
     const card = item.food;
     useEffect(() => {
-        setTotal((prevTotale) => (prevTotale += card.price * qty));
+        setTotal((prevTotale) => (prevTotale+(card.price * item.quantity)));
     }, []);
 
     const update = (qty) => {
@@ -38,7 +43,7 @@ const Item = ({ item, setTotal, deleteItem }) => {
                         onClick={() => deleteItem(item.id)}
                         className="delete"
                     >
-                        <AiFillDelete />
+                        <AiOutlineDelete size={25} fontWeight={50}/>
                     </button>
                     <div className="quantity">
                         <div

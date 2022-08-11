@@ -36,6 +36,7 @@
     -moz-transition: color var(--main-transition) linear;
     -ms-transition: color var(--main-transition) linear;
     -o-transition: color var(--main-transition) linear;
+    text-decoration: none;
 }
 
 .services .box a:hover {
