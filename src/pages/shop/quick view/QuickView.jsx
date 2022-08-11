@@ -14,15 +14,26 @@ import { productsContext } from "../../../App";
 const QuickView = ({ product, setActive }) => {
     const [qty, increment, decrement] = useCounter(1);
     const productURL = `/product/${product.name}`;
-    const { getCartProducts, user } = useContext(productsContext);
+    const { getCartProducts, cartProducts, user } = useContext(productsContext);
     const navigate = useNavigate();
     const addToCart = () => {
         if (user) {
-            axios.post(
-                `https://backend.aromapedia.ma/api/carts?api_token=${
-                    user.api_token
-                }&food_id=${product.id}&quantity=${1}`
-            );
+            let productsId = {};
+            for (let cartProduct of cartProducts) {
+                productsId[cartProduct.food_id] = cartProduct.id;
+            }
+
+            if (Object.keys(productsId).includes(product.id.toString())) {
+                axios.post(
+                    `https://backend.aromapedia.ma/api/carts/increment/${
+                        productsId[product.id]
+                    }?api_token=${user.api_token}&quantity=${qty}`
+                );
+            } else {
+                axios.post(
+                    `https://backend.aromapedia.ma/api/carts?api_token=${user.api_token}&food_id=${product.id}&quantity=${qty}`
+                );
+            }
             getCartProducts();
         } else {
             navigate("/login", { replacea: true });

@@ -1,13 +1,22 @@
-import React, { useEffect } from "react";
+import axios from "axios";
+import React, { useContext, useEffect } from "react";
 import { AiFillDelete } from "react-icons/ai";
+import { productsContext } from "../../../App";
 import useCounter from "../../../hooks/useCounter";
 
 const Item = ({ item, setTotal, deleteItem }) => {
-    const [qty] = useCounter(item.quantity);
+    const [qty, increment, decrement] = useCounter(item.quantity);
+    const { user } = useContext(productsContext);
     const card = item.food;
     useEffect(() => {
         setTotal((prevTotale) => (prevTotale += card.price * qty));
     }, []);
+
+    const update = (qty) => {
+        axios.post(
+            `https://backend.aromapedia.ma/api/carts/increment/${item.id}?api_token=${user.api_token}&quantity=${qty}`
+        );
+    };
 
     return (
         <div>
@@ -32,8 +41,26 @@ const Item = ({ item, setTotal, deleteItem }) => {
                         <AiFillDelete />
                     </button>
                     <div className="quantity">
-                        <span>Quantity :</span>
-                        {qty}
+                        <div
+                            onClick={() => {
+                                decrement();
+                                update(qty - 1);
+                            }}
+                            className="decrement"
+                        >
+                            -
+                        </div>
+                        <div className="num">{qty}</div>
+
+                        <div
+                            onClick={() => {
+                                increment();
+                                update(qty + 1);
+                            }}
+                            className="increment"
+                        >
+                            +
+                        </div>
                     </div>
                 </div>
             </div>

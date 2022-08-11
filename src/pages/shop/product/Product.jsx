@@ -12,8 +12,6 @@ const Product = ({ product, setName, setActive }) => {
         setName(name);
     };
 
-    console.log(product);
-
     return (
         <div className="product">
             <div className="image">

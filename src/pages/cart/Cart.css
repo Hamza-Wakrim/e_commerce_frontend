@@ -99,7 +99,29 @@
 
 .cart .cart-item .quantity {
     display: flex;
+}
+
+.cart .cart-item .quantity .decrement,
+.cart .cart-item .quantity .num,
+.cart .cart-item .quantity .increment {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.cart .cart-item .quantity .decrement,
+.cart .cart-item .quantity .increment {
+    background-color: var(--alt);
+    color: white;
     border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
 }
 
 .cart .cart-total {

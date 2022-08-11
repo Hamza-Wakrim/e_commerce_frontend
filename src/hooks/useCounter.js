@@ -4,14 +4,14 @@ const useCounter = (initialCount) => {
     const [qty, setQty] = useState(initialCount);
 
     const increment = () => {
-        setQty(qty + 1);
+        setQty((prevQty) => prevQty + 1);
     };
 
     const decrement = () => {
         if (qty === 1) {
             setQty(qty);
         } else {
-            setQty(qty - 1);
+            setQty((prevQty) => prevQty - 1);
         }
     };
 

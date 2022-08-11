@@ -7,17 +7,29 @@ import "./product.css";
 
 const Product = ({ product: { id, name, price, media }, rating, button }) => {
     const productURL = `/product/${name}`;
-
-    const { user, getCartProducts } = useContext(productsContext);
+    const { user, getCartProducts, cartProducts } = useContext(productsContext);
 
     const navigate = useNavigate();
     const addToCart = () => {
         if (user) {
-            axios.post(
-                `https://backend.aromapedia.ma/api/carts?api_token=${
-                    user.api_token
-                }&food_id=${id}&quantity=${1}`
-            );
+            let productsId = {};
+            for (let cartProduct of cartProducts) {
+                productsId[cartProduct.food_id] = cartProduct.id;
+            }
+
+            if (Object.keys(productsId).includes(id.toString())) {
+                axios.post(
+                    `https://backend.aromapedia.ma/api/carts/increment/${
+                        productsId[id]
+                    }?api_token=${user.api_token}&quantity=${1}`
+                );
+            } else {
+                axios.post(
+                    `https://backend.aromapedia.ma/api/carts?api_token=${
+                        user.api_token
+                    }&food_id=${id}&quantity=${1}`
+                );
+            }
             getCartProducts();
         } else {
             navigate("/login", { replacea: true });
